@@ -14,7 +14,7 @@ function App() {
     <div className='app'>
       <Header/>
       <Body/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   )
 }

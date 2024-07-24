@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 export default function IngredientsList () {
@@ -30,6 +30,7 @@ export default function IngredientsList () {
         return <h1>Loading... please wait</h1>
     } else {
         return (
+            <>
             <div className="objectList">
     
                 {
@@ -38,9 +39,10 @@ export default function IngredientsList () {
                         className="objectItem"
                         onClick={() => showIngredient(ingredient.id)}
                         style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${ingredient.image_url})`, 
-                            backgroundSize:'600px', 
-                            backgroundPosition: 'center 80%'}} 
+                            backgroundImage: `url(${ingredient.image_url})`, 
+                            // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${ingredient.image_url})`, 
+                            backgroundSize:'200px', 
+                            backgroundPosition: '50% 50%'}} 
                         >
                             
                             <h2>{ingredient.name}</h2>
@@ -51,6 +53,12 @@ export default function IngredientsList () {
                 }
     
             </div>
+
+            <div className='objectList'>
+                <Link to ='/newingredient' className='new-ingredient-button'>Create Ingredient</Link>
+            </div>
+
+            </>
         )
 
     }

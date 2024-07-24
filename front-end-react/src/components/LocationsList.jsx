@@ -38,9 +38,10 @@ export default function LocationsList () {
                         className="objectItem"
                         onClick={() => showLocation(location.id)}
                         style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${location.image_url})`, 
-                            backgroundSize:'600px', 
-                            backgroundPosition: 'center 80%'}} 
+                            backgroundImage: `url(${location.image_url})`, 
+                            // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${location.image_url})`, 
+                            backgroundSize:'200px', 
+                            backgroundPosition: '50% 50%'}} 
                         >
                             
                             <h2>{location.name}</h2>
