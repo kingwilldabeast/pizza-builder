@@ -22,7 +22,7 @@ export default function IngredientExpanded (props) {
   }, [props.ingredients, ingredientID])
 
   const openEditor = (e) => {
-    navigate(`/editevent/${eventID}`);
+    navigate(`/editingredient/${ingredientID}`);
   }
 
   const deleteEvent = async (e) => {

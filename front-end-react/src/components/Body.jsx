@@ -4,6 +4,7 @@ import Home from './Home'
 import IngredientsList from './IngredientsList'
 import IngredientExpanded from './IngredientExpanded'
 import IngredientCreation from './IngredientCreation'
+import IngredientEdit from './IngredientEdit'
 import LocationsList from './LocationsList'
 import LocationExpanded from './LocationExpanded'
 
@@ -18,6 +19,7 @@ export default function Main (props) {
             <Route path="/ingredients" element={<IngredientsList/>}/>
             <Route path="/ingredients/:ingredientID" element={<IngredientExpanded/>}/>
             <Route path="/newingredient" element={<IngredientCreation/>}/>
+            <Route path="/editingredient/:ingredientID" element={<IngredientEdit/>}/>
             <Route path="/locations" element={<LocationsList/>}/>
             <Route path="/locations/:locationID" element={<LocationExpanded/>}/>
             <Route path="*" element={<FileNotFound />}/>

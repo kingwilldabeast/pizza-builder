@@ -45,7 +45,7 @@ export default function IngredientCreation() {
             half_calories_16_in: inputInProgress.half_calories_16_in,
             half_price_8_in: inputInProgress.half_price_8_in,
             half_price_12_in: inputInProgress.half_price_12_in,
-            half_price_16_in: inputInProgress.half_price_16_in
+            half_price_16_in: inputInProgress.half_price_16_in,
 
           }, {
             headers: {
