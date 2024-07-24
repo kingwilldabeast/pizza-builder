@@ -12,6 +12,11 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: white;
 }
 
 body {
@@ -65,18 +70,20 @@ body {
 
 .header{
   text-align: center;
-  color: black;
+  /* color: black; */
   /* font-family: Magic; */
   font-size: 30px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255,255,255,0.4);
+  margin-top: 20px;
+  background: rgba(198, 88, 88, 0.4);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(3px);
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(246, 59, 59, 0.25);
   border-radius: 10px;
+
   /* justify-content: space-around; */
 }
 
@@ -93,12 +100,18 @@ body {
   gap: 40px;
   padding: 0 20px;
   margin: 10px 0;
+  background: rgba(255,255,255,0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
 }
 
 .navtext {
   /* font-family: Magic; */
   font-size: 40px;
-  color: black;
+  /* color: white; */
+  text-decoration: none;
   border: 1px solid transparent;
   padding: 10px;
   opacity: 1;
@@ -107,14 +120,15 @@ body {
 }
 
 .navtext:hover {
-  color: black;
-  border-top: 1px solid yellow;
-  border-bottom: 1px solid yellow;
+  color: rgb(43, 204, 240);
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .navtext.active {
   opacity: 0.2;
 }
+
 
 .main {
   border-radius: 10px;
@@ -127,15 +141,13 @@ body {
 }
 
 .home {
-  /* background-color: rgb(0, 0, 0, .3); */
-  /* position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-  /* width: 100%; */
-  /* padding-top: 13%; */
+  background: rgba(24, 158, 33, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border: 1px solid green;
   padding: 14% 0;
-  color: black;
+  /* color: black; */
   /* font-family: Magic; */
   text-align: center;
   font-size: 50px;
@@ -143,8 +155,11 @@ body {
 
 .objectList {
   overflow: scroll;
-  /* border: 1px solid orange; */
+  border: 1px solid rgb(25, 132, 15);
   border-radius: 10px;
+  background: rgba(24, 158, 33, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
   /* background-color: rgb(167, 215, 166); */
   padding: 10px;
   width: 100%;
@@ -153,20 +168,58 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  background: rgba(255,255,255,0.4);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(3px);
 }
 
 .objectItem {
-  border: 1px solid yellow;
+  border: 1px solid white;
   border-radius: 10px;
-  color: black;
+  /* color: black; */
   padding: 10px;
   margin: 10px;
   width: 400px;
   text-align: center;
   /* font-family: Elegant; */
+  text-shadow: 
+  -1px -1px 0 #000,  
+  1px -1px 0 #000,
+  -1px  1px 0 #000,
+  1px  1px 0 #000;
+}
+
+.createButton {
+  border: 1px solid rgb(102, 115, 228);
+  border-radius: 10px;
+  color: white;
+  width: 400px;
+  background: rgba(90, 205, 255, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  border-radius: 10px;
+  border: 1px solid rgb(25, 132, 15);
+  background: rgba(24, 158, 33, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
+  padding: 10px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  /* border: 1px solid orange; */
+
 }
 
 .objectItem:hover {
@@ -184,9 +237,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid yellow;
+  border: 1px solid rgb(102, 115, 228);
   border-radius: 10px;
   margin-top: 10px;
+  color: black
 }
 
 .expandedBody {
@@ -207,6 +261,8 @@ body {
   /* font-family: Elegant; */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+
 }
 
 .expandedImageContainer {
@@ -257,13 +313,17 @@ body {
   .navtext {
     font-size: 15px;
     padding: 5px;
+    color: white;
+
   }
   
   .navtext:hover {
+    /* color: rgb(43, 204, 240); */
 
   }
   
   .navtext.active {
+    color: rgb(92, 116, 121);
   }
   
   .main {
@@ -274,6 +334,7 @@ body {
   .home {
     padding: 14% 0;
     font-size: 20px;
+    margin-top: 90px;
   }
   
   .objectList {
@@ -281,7 +342,8 @@ body {
     padding: 10px;
     width: 200px;  
     height: auto;
-    max-height: 400px;
+    max-height: 300px;
+
 
 
   }
@@ -296,6 +358,15 @@ body {
   }
   
   .objectItem:hover {
+  }
+
+  .createButton {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    font-size: 10px;
+    height: 30px;
+    text-align: center;
   }
   
   .expandedItem {

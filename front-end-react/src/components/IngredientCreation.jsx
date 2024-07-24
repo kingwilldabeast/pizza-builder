@@ -67,9 +67,9 @@ export default function IngredientCreation() {
       };
 
     return(
-        <div className="form">
-
-        <form className="" onSubmit={handleSubmit}>
+        <div className="form-container">
+          New Ingredient
+        <form className="form" onSubmit={handleSubmit}>
 
         <input className=""
           name="name"
@@ -97,7 +97,7 @@ export default function IngredientCreation() {
         />
         <input className=""
             name="half_calories_8_in"
-            placeholder="calories of ingredients for 8 inch pizza"
+            placeholder="calories for 8 inch "
             type="integer" 
             value={inputInProgress.half_calories_8_in}
             onChange={updateTyping}
@@ -106,7 +106,7 @@ export default function IngredientCreation() {
 
             <input className=""
             name="half_calories_12_in"
-            placeholder="calories of ingredients for 12 inch pizza"
+            placeholder="calories for 12 inch"
             type="integer" 
             value={inputInProgress.half_calories_12_in}
             onChange={updateTyping}
@@ -115,7 +115,7 @@ export default function IngredientCreation() {
 
             <input className=""
             name="half_calories_16_in"
-            placeholder="calories of ingredients for 16 inch pizza"
+            placeholder="calories for 16 inch"
             type="integer" 
             value={inputInProgress.half_calories_16_in}
             onChange={updateTyping}
@@ -124,7 +124,7 @@ export default function IngredientCreation() {
 
             <input className=""
             name="half_price_8_in"
-            placeholder="price of ingredients for 8 inch pizza"
+            placeholder="price for 8 inch"
             type="float" 
             value={inputInProgress.half_price_8_in}
             onChange={updateTyping}
@@ -133,7 +133,7 @@ export default function IngredientCreation() {
 
             <input className=""
             name="half_price_12_in"
-            placeholder="price of ingredients for 12 inch pizza"
+            placeholder="price of for 12 inch"
             type="float" 
             value={inputInProgress.half_price_12_in}
             onChange={updateTyping}
@@ -142,7 +142,7 @@ export default function IngredientCreation() {
 
             <input className=""
             name="half_price_16_in"
-            placeholder="price of ingredients for 16 inch pizza"
+            placeholder="price of for 16 inch"
             type="float" 
             value={inputInProgress.half_price_16_in}
             onChange={updateTyping}
@@ -152,7 +152,7 @@ export default function IngredientCreation() {
 
         <button className="searchBtn">Submit</button>
       </form>
-      <button className="searchBtn" onClick={returnToIngredients}>Cancel</button>
+      <button className="" onClick={returnToIngredients}>Cancel</button>
       </div>
 
 

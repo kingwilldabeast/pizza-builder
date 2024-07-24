@@ -54,9 +54,13 @@ export default function IngredientsList () {
     
             </div>
 
-            <div className='objectList'>
-                <Link to ='/newingredient' className='new-ingredient-button'>Create Ingredient</Link>
-            </div>
+                <Link to ='/newingredient' className='new-ingredient-button'
+                style={{ textDecoration: 'none'}}
+                >
+                <div className='createButton'>
+                    Create Ingredient
+                </div>
+                </Link>
 
             </>
         )

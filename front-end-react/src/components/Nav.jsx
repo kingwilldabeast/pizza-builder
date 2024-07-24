@@ -12,13 +12,20 @@ export default function Nav (props) {
     return (
       
     <div className="nav">
-      <Link to="/" onClick={() => handleClick('/')}>
+      <Link to="/" onClick={() => handleClick('/')}
+       style={{ textDecoration: 'none' }}
+      >
         <h2 className={activeLink === '/' ? 'navtext active' : 'navtext'}>Home</h2>
       </Link>
-      <Link to="/ingredients" onClick={() => handleClick('/ingredients')}>
+      <Link to="/ingredients" onClick={() => handleClick('/ingredients')}
+      style={{ textDecoration: 'none' }}
+
+      >
         <h2 className={activeLink === '/ingredients' ? 'navtext active' : 'navtext'}>Ingredients</h2>
       </Link>
-      <Link to="/locations" onClick={() => handleClick('/locations')}>
+      <Link to="/locations" onClick={() => handleClick('/locations')}
+      style={{ textDecoration: 'none' }}
+      >
         <h2 className={activeLink === '/locations' ? 'navtext active' : 'navtext'}>Locations</h2>
       </Link>
     </div>

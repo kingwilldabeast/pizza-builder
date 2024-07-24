@@ -6,7 +6,6 @@ export default function Header (props) {
       
       <div className="header">
         <h1>Zapata's Pizza</h1>
-        <Nav/>
       </div>
     )
   }

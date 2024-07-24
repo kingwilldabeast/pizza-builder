@@ -23,18 +23,22 @@ export default function LocationExpanded (props) {
 
   return location ? (
     <div className="expandedItem">
-      <Link to ='/locations' className='navtext'>Back to locations</Link>
+      <Link to ='/locations' 
+      style={{ textDecoration: 'none', color: 'black' }}
+      >
+      Back to locations</Link>
         <br/>
       <div className='expandedBody'>
         <div className='expandedText'>
         <h2>{location.name}</h2>
+        <h3>{location.address}</h3>
 
 
         </div>
+        <div className='expandedImageContainer'>
+        <img src = {location.image_url}/>
 
-        <img src = {location.image_url} 
-        className='expandedImage'
-        />
+        </div>
       </div>
     </div>
   ) 

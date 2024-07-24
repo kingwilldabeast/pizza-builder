@@ -46,14 +46,19 @@ export default function IngredientExpanded (props) {
 
   return ingredient ? (
     <div className="expandedItem">
-      <Link to ='/ingredients' className='navtext'>Back to Ingredients</Link>
+      <Link to ='/ingredients' 
+      style={{ textDecoration: 'none', color: 'black' }}
+      >
+      Back to Ingredients
+      </Link>
         <br/>
       <div className='expandedBody'>
         <div className='expandedText'>
         <h2>{ingredient.name}</h2>
+        <h3>{ingredient.description}</h3>
 
-        <button onClick={openEditor}>Edit Event</button>
-        <button onClick={deleteEvent}>Delete Event</button>
+        <div onClick={openEditor}>Edit Ingredient</div>
+        <div onClick={deleteEvent}>Delete Ingredient</div>
         </div>
         <div className='expandedImageContainer'>
           <img src = {ingredient.image_url} />
