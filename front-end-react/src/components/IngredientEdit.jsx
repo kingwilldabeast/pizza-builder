@@ -91,9 +91,9 @@ export default function IngredientEdit() {
     }
     
     return(
-        <div className="form">
-
-        <form className="" onSubmit={handleSubmit}>
+        <div className="form-container">
+            Edit Ingredient
+        <form className="form" onSubmit={handleSubmit}>
 
         <input className=""
         name="name"

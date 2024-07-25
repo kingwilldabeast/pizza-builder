@@ -7,6 +7,7 @@ import IngredientCreation from './IngredientCreation'
 import IngredientEdit from './IngredientEdit'
 import LocationsList from './LocationsList'
 import LocationExpanded from './LocationExpanded'
+import PizzaCreation from './PizzaCreation'
 
 export default function Main (props) {
     // console.log(props)
@@ -22,6 +23,7 @@ export default function Main (props) {
             <Route path="/editingredient/:ingredientID" element={<IngredientEdit/>}/>
             <Route path="/locations" element={<LocationsList/>}/>
             <Route path="/locations/:locationID" element={<LocationExpanded/>}/>
+            <Route path="/newpizza" element={<PizzaCreation/>}/>
             <Route path="*" element={<FileNotFound />}/>
         </Routes>
       </div>
