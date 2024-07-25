@@ -7,10 +7,23 @@ export default function PizzaCreation() {
 
     let navigate = useNavigate()
 
+    const [ingredients, setIngredients] = useState([])
+    useEffect(()=>{
+        const getData = async () => {
+          const response = await axios.get(`http://127.0.0.1:8000/ingredients/`)
+          console.log('data', response)
+          
+          //assign API results to array
+          setIngredients(response.data)
+        }
+        getData()
+    
+      },[])
+
     const [inputInProgress, setInputInProgress] = useState({ 
         name: '',
-        description: '',
-        image_url: '',
+        location: '',
+        size: '',
         half_calories_8_in: '',
         half_calories_12_in: '',
         half_calories_16_in: '',
@@ -29,8 +42,8 @@ export default function PizzaCreation() {
         navigate(`/ingredients`);
       }
 
-      const returnToIngredients = () => {
-        navigate(`/ingredients`)
+      const returnToHome = () => {
+        navigate(`/`)
       }
 
       const addNewIngredient = async () => {
@@ -68,91 +81,85 @@ export default function PizzaCreation() {
 
     return(
         <div className="form-container">
-          New Ingredient
+          New Pizza
         <form className="form" onSubmit={handleSubmit}>
 
+
+      
         <input className=""
           name="name"
-          placeholder="ingredient name"
+          placeholder="Customer Name"
           type="text" 
           value={inputInProgress.name}
           onChange={updateTyping}
           required
         />
+
         <input className=""
-          name="description"
-          placeholder="description"
-          type="text" 
-          value={inputInProgress.description}
-          onChange={updateTyping}
-          required
-        />        
+            name="location"
+            placeholder="location dropdown"
+            type="integer" 
+            value={inputInProgress.location}
+            onChange={updateTyping}
+            required
+            />
+
         <input className=""
-          name="image_url"
-          placeholder="image link"
-          type="text" 
-          value={inputInProgress.image_url}
-          onChange={updateTyping}
-          required
-        />
-        <input className=""
-            name="half_calories_8_in"
-            placeholder="calories for 8 inch "
+            name="size"
+            placeholder="size dropdown"
             type="integer" 
-            value={inputInProgress.half_calories_8_in}
+            value={inputInProgress.size}
             onChange={updateTyping}
             required
             />
 
-            <input className=""
-            name="half_calories_12_in"
-            placeholder="calories for 12 inch"
-            type="integer" 
-            value={inputInProgress.half_calories_12_in}
-            onChange={updateTyping}
-            required
-            />
+            {
+                ingredients.map((ingredient, index) => (
+                    <div key={index} 
+                    className=""
+                    // onClick={() => showIngredient(ingredient.id)}
+                    // style={{
+                    //     backgroundImage: `url(${ingredient.image_url})`, 
+                    //     // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${ingredient.image_url})`, 
+                    //     backgroundSize:'200px', 
+                    //     backgroundPosition: '50% 50%'}} 
+                    >
+                        <div className="ingredient-select">
+                        <div>{ingredient.name}</div>
+                        <div className="ingredient-column">
+                            <div>Both</div>
+                            <div className="ingredient-toggle">
+                                <div className="ingredient-arrow">^</div>
+                                <div className="ingredient-arrow">v</div>
+                                {/* <input className="ingredient-amount"/> */}
+                            </div>
+                        </div>
+                        <div className="ingredient-column">
+                            <div>Left</div>
+                            <div className="ingredient-toggle">
+                                <div className="ingredient-arrow">^</div>
+                                <div className="ingredient-arrow">v</div>
+                                <input className="ingredient-amount"/>
+                            </div>
+                        </div>
+                        <div className="ingredient-column">
+                            <div>Right</div>
+                            <div className="ingredient-toggle">
+                                <div className="ingredient-arrow">^</div>
+                                <div className="ingredient-arrow">v</div>
+                                <input className="ingredient-amount"/>
+                            </div>
+                        </div>
 
-            <input className=""
-            name="half_calories_16_in"
-            placeholder="calories for 16 inch"
-            type="integer" 
-            value={inputInProgress.half_calories_16_in}
-            onChange={updateTyping}
-            required
-            />
+                        </div>
 
-            <input className=""
-            name="half_price_8_in"
-            placeholder="price for 8 inch"
-            type="float" 
-            value={inputInProgress.half_price_8_in}
-            onChange={updateTyping}
-            required
-            />
-
-            <input className=""
-            name="half_price_12_in"
-            placeholder="price of for 12 inch"
-            type="float" 
-            value={inputInProgress.half_price_12_in}
-            onChange={updateTyping}
-            required
-            />
-
-            <input className=""
-            name="half_price_16_in"
-            placeholder="price of for 16 inch"
-            type="float" 
-            value={inputInProgress.half_price_16_in}
-            onChange={updateTyping}
-            required
-            />
-
+                     </div>    
+                ))
+            }
 
         <button className="searchBtn">Submit</button>
       </form>
-      <button className="" onClick={returnToIngredients}>Cancel</button>
+      <button className="" onClick={returnToHome}>Cancel</button>
       </div>
 
 

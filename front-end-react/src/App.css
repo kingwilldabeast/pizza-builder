@@ -395,4 +395,37 @@ body {
     width: 150px;
   }
 
+  .ingredient-select {
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid black;
+    min-width: 200px;
+  }
+
+  .ingredient-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+
+  }
+
+  .ingredient-toggle {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+  }
+
+  .ingredient-arrow {
+    background-color: gray;
+    border: 1px solid black;
+    width: 10px;
+  }
+
+  .ingredient-amount {
+    width: 10px
+  }
 }
