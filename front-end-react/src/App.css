@@ -395,6 +395,11 @@ body {
     width: 150px;
   }
 
+  .form {
+    max-height: 300px;
+    overflow: scroll;
+  }
+
   .ingredient-select {
     font-size: 10px;
     display: flex;
