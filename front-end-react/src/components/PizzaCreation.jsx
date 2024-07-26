@@ -46,7 +46,7 @@ export default function PizzaCreation() {
     const [inputInProgress, setInputInProgress] = useState({ 
         name: '',
         location: '',
-        size: '',
+        size: '16inch',
         calories: 0,
         price: 0,
     });
@@ -57,8 +57,16 @@ export default function PizzaCreation() {
       
     }
 
+    useEffect(() => {
+      const { newCalories, newPrice } = updateCaloriesPrice();
+      setInputInProgress(prevState => ({
+        ...prevState,
+        calories: newCalories,
+        price: newPrice,
+      }));
+    }, [toppings, inputInProgress.size]); 
+
     const updateCaloriesPrice = () => {
-      try {
       let newCalories = 0;
       let newPrice = 0;
     
@@ -85,13 +93,11 @@ export default function PizzaCreation() {
         console.log(`current price: ${newPrice}`)
       });
     
-      setInputInProgress({ ...inputInProgress, calories: newCalories, price: newPrice });
       // console.log(`calories: ${inputInProgress.calories}`)
       // console.log(`price: ${inputInProgress.price}`)
       console.log(`size: ${inputInProgress.size}`)
-    } catch (error) {
-      console.error('Error getting data:', error)
-    }
+      return { newCalories, newPrice };
+
     };
     
     
