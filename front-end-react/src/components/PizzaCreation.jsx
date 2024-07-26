@@ -24,9 +24,15 @@ export default function PizzaCreation() {
           // Transform ingredients into toppings array
           const toppingsData = responseIngredients.data.map(ingredient => ({
             ingredient: ingredient,
-            number1: 0,
-            number2: 0,
-            number3: 0
+            leftTopping: 0,
+            rightTopping: 0,
+            half_calories_8_in: ingredient.half_calories_8_in,
+            half_calories_12_in: ingredient.half_calories_12_in,
+            half_calories_16_in: ingredient.half_calories_16_in,
+            half_price_8_in: ingredient.half_price_8_in,
+            half_price_12_in: ingredient.half_price_12_in,
+            half_price_16_in: ingredient.half_price_16_in,
+
           }));
           setToppings(toppingsData);
         } catch (error) {
@@ -41,8 +47,8 @@ export default function PizzaCreation() {
         name: '',
         location: '',
         size: '',
-        // left_toppings: {},
-        // right_toppings: {}
+        calories: 0,
+        price: 0,
     });
     
     
@@ -50,6 +56,44 @@ export default function PizzaCreation() {
       setInputInProgress({ ...inputInProgress, [e.target.name]: e.target.value });
       
     }
+
+    const updateCaloriesPrice = () => {
+      try {
+      let newCalories = 0;
+      let newPrice = 0;
+    
+      toppings.forEach((topping) => {
+        const totalTopping = topping.leftTopping + topping.rightTopping;
+    
+        switch (inputInProgress.size) {
+          case "8inch":
+            newPrice += totalTopping * topping.half_price_8_in;
+            newCalories += totalTopping * topping.half_calories_8_in;
+            break;
+          case "12inch":
+            newPrice += totalTopping * topping.half_price_12_in;
+            newCalories += totalTopping * topping.half_calories_12_in;
+            break;
+          case "16inch":
+            newPrice += totalTopping * topping.half_price_16_in;
+            newCalories += totalTopping * topping.half_calories_16_in;
+            break;
+          default:
+            break;
+        }
+        console.log(`current calories: ${newCalories}`)
+        console.log(`current price: ${newPrice}`)
+      });
+    
+      setInputInProgress({ ...inputInProgress, calories: newCalories, price: newPrice });
+      // console.log(`calories: ${inputInProgress.calories}`)
+      // console.log(`price: ${inputInProgress.price}`)
+      console.log(`size: ${inputInProgress.size}`)
+    } catch (error) {
+      console.error('Error getting data:', error)
+    }
+    };
+    
     
     const handleNumberChange = (index, field, event) => {
       const newToppings = toppings.map((topping, i) => {
@@ -60,6 +104,7 @@ export default function PizzaCreation() {
       });
   
       setToppings(newToppings);
+      updateCaloriesPrice()
     };
   
     const incrementValue = (index, field) => {
@@ -71,6 +116,7 @@ export default function PizzaCreation() {
       });
   
       setToppings(newToppings);
+      updateCaloriesPrice()
     };
   
     const decrementValue = (index, field) => {
@@ -82,28 +128,31 @@ export default function PizzaCreation() {
       });
   
       setToppings(newToppings);
+      updateCaloriesPrice()
     };
 
     const incrementBoth = (index, leftfield) => {
       const newToppings = toppings.map((topping, i) => {
         if (i === index) {
-          return { ...topping, number2: topping[leftfield] + 1, number3: topping[leftfield] + 1 };
+          return { ...topping, leftTopping: topping[leftfield] + 1, rightTopping: topping[leftfield] + 1 };
         }
         return topping;
       });
   
       setToppings(newToppings);
+      updateCaloriesPrice()
     };
   
     const decrementBoth = (index, leftfield) => {
       const newToppings = toppings.map((topping, i) => {
         if (i === index) {
-          return { ...topping, number2: topping[leftfield] - 1, number3: topping[leftfield] - 1 };
+          return { ...topping, leftTopping: topping[leftfield] - 1, rightTopping: topping[leftfield] - 1 };
         }
         return topping;
       });
   
       setToppings(newToppings);
+      updateCaloriesPrice()
     };
 
     // const handleSubmit = (e) => {
@@ -116,39 +165,6 @@ export default function PizzaCreation() {
         navigate(`/`)
         // fix link color!
       }
-
-    //   const addNewIngredient = async () => {
- 
-    //     try {
-    //       const responseIngredients = await axios.post("http://127.0.0.1:8000/ingredients/", {
-    //         name: inputInProgress.name,
-    //         description: inputInProgress.description,
-    //         image_url: inputInProgress.image_url,
-    //         half_calories_8_in: inputInProgress.half_calories_8_in,
-    //         half_calories_12_in: inputInProgress.half_calories_12_in,
-    //         half_calories_16_in: inputInProgress.half_calories_16_in,
-    //         half_price_8_in: inputInProgress.half_price_8_in,
-    //         half_price_12_in: inputInProgress.half_price_12_in,
-    //         half_price_16_in: inputInProgress.half_price_16_in,
-
-    //       }, {
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //       });
-     
-    //         console.log(`ingredient is ${responseIngredients.data}`)
-     
-    //         if (responseIngredients.status === 201) {
-    //             console.log("ingredient created");
-    //         } else {
-    //             console.error("Failed to add ingredient:", responseIngredients.statusText);
-    //         }
-    //     } catch (error) {
-    //       console.error("Error:", error)
-    //     }
-      
-    //   };
 
     return(
         <div className="form-container">
@@ -166,23 +182,43 @@ export default function PizzaCreation() {
           required
         />
 
-        <input className=""
-            name="location"
-            placeholder="location dropdown"
-            type="integer" 
-            value={inputInProgress.location}
-            onChange={updateTyping}
-            required
-            />
+      <select
+        className=""
+        name="location"
+        value={inputInProgress.location}
+        onChange={updateTyping}
+        required
+        >
+        <option value="" disabled>
+          location
+        </option>
+        {locations.map((location) => (
+          <option key={location.id} value={location.name}>
+            {location.name}
+          </option>
+        ))}
+      </select>
 
-        <input className=""
-            name="size"
-            placeholder="size dropdown"
-            type="integer" 
-            value={inputInProgress.size}
-            onChange={updateTyping}
-            required
-            />
+      <select
+        className=""
+        name="size"
+        value={inputInProgress.size}
+        onChange={updateTyping}
+        required
+        >
+        <option value="" disabled>
+          size
+        </option>
+        <option value="8inch" >
+          8 inch
+        </option>
+        <option value="12inch" >
+          12 inch
+        </option>
+        <option value="16inch" >
+          16 inch
+        </option>
+        </select>
 
         {toppings.map((topping, index) => (
                 <div key={index}>
@@ -194,28 +230,28 @@ export default function PizzaCreation() {
                       value={topping.number1}
                       onChange={(event) => handleNumberChange(index, 'number1', event)}
                     /> */}
-                    <button type="button" onClick={() => decrementBoth(index, 'number2')}>-</button>
-                    <button type="button" onClick={() => incrementBoth(index, 'number2')}>+</button>
+                    <button type="button" onClick={() => decrementBoth(index, 'leftTopping')}>-</button>
+                    <button type="button" onClick={() => incrementBoth(index, 'leftTopping')}>+</button>
                   </div>
                   <div>
                     <label>Left:</label>
                     <input
                       type="number"
-                      value={topping.number2}
-                      onChange={(event) => handleNumberChange(index, 'number2', event)}
+                      value={topping.leftTopping}
+                      onChange={(event) => handleNumberChange(index, 'leftTopping', event)}
                     />
-                    <button type="button" onClick={() => decrementValue(index, 'number2')}>-</button>
-                    <button type="button" onClick={() => incrementValue(index, 'number2')}>+</button>
+                    <button type="button" onClick={() => decrementValue(index, 'leftTopping')}>-</button>
+                    <button type="button" onClick={() => incrementValue(index, 'leftTopping')}>+</button>
                   </div>
                   <div>
                     <label>Right:</label>
                     <input
                       type="number"
-                      value={topping.number3}
-                      onChange={(event) => handleNumberChange(index, 'number3', event)}
+                      value={topping.rightTopping}
+                      onChange={(event) => handleNumberChange(index, 'rightTopping', event)}
                     />
-                    <button type="button" onClick={() => decrementValue(index, 'number3')}>-</button>
-                    <button type="button" onClick={() => incrementValue(index, 'number3')}>+</button>
+                    <button type="button" onClick={() => decrementValue(index, 'rightTopping')}>-</button>
+                    <button type="button" onClick={() => incrementValue(index, 'rightTopping')}>+</button>
                   </div>
                 </div>
       ))}
@@ -224,8 +260,8 @@ export default function PizzaCreation() {
         <button className="searchBtn">Submit</button>
       </form>
       <button className="" onClick={returnToHome}>Cancel</button>
-      <div>Calories:</div>
-      <div>Price:</div>
+      <div>Calories: {inputInProgress.calories}</div>
+      <div>Price: {inputInProgress.price}</div>
       </div>
 
 
