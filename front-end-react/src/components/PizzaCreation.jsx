@@ -7,9 +7,17 @@ export default function PizzaCreation() {
 
     let navigate = useNavigate()
 
+    const [locations, setLocations] = useState([]);
     const [ingredients, setIngredients] = useState([])
     const [toppings, setToppings] = useState([]);
-    const [locations, setLocations] = useState([]);
+    const [inputInProgress, setInputInProgress] = useState({ 
+      name: 'Bob',
+      location: 'West',
+      size: '16 inch',
+      notes: 'no notes test',
+      calories: 0,
+      price: 0,
+  });
 
     useEffect(() => {
       // Fetch data from the API when the component mounts
@@ -43,15 +51,12 @@ export default function PizzaCreation() {
       fetchData();
     }, []);
 
-    const [inputInProgress, setInputInProgress] = useState({ 
-        name: '',
-        location: '',
-        size: '16inch',
-        calories: 0,
-        price: 0,
-    });
-    
-    
+      // Map the location name to its ID
+      const getLocationIdByName = (name) => {
+        const location = locations.find(loc => loc.name === name);
+        return location ? location.id : null;
+      };
+
     const updateTyping = (e) => {
       setInputInProgress({ ...inputInProgress, [e.target.name]: e.target.value });
       
@@ -74,28 +79,28 @@ export default function PizzaCreation() {
         const totalTopping = topping.leftTopping + topping.rightTopping;
     
         switch (inputInProgress.size) {
-          case "8inch":
+          case "8 inch":
             newPrice += totalTopping * topping.half_price_8_in;
             newCalories += totalTopping * topping.half_calories_8_in;
             break;
-          case "12inch":
+          case "12 inch":
             newPrice += totalTopping * topping.half_price_12_in;
             newCalories += totalTopping * topping.half_calories_12_in;
             break;
-          case "16inch":
+          case "16 inch":
             newPrice += totalTopping * topping.half_price_16_in;
             newCalories += totalTopping * topping.half_calories_16_in;
             break;
           default:
             break;
         }
-        console.log(`current calories: ${newCalories}`)
-        console.log(`current price: ${newPrice}`)
+        // console.log(`current calories: ${newCalories}`)
+        // console.log(`current price: ${newPrice}`)
       });
     
       // console.log(`calories: ${inputInProgress.calories}`)
       // console.log(`price: ${inputInProgress.price}`)
-      console.log(`size: ${inputInProgress.size}`)
+      // console.log(`size: ${inputInProgress.size}`)
       return { newCalories, newPrice };
 
     };
@@ -161,11 +166,58 @@ export default function PizzaCreation() {
       updateCaloriesPrice()
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     addNewIngredient()
-    //     navigate(`/ingredients`);
-    //   }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        addNewPizza()
+        // addToppingstoPizza()
+        // navigate(`/ingredients`);
+        console.log(inputInProgress)
+        // console.log(toppings)
+      }
+
+    const addNewPizza = async () => {
+      
+      const locationId = getLocationIdByName(inputInProgress.location);
+      const locationIdURL = `http://127.0.0.1:8000/locations/${locationId}/`
+      console.log(locationId)
+    
+      if (!locationId) {
+        console.error("Invalid location selected");
+        return;
+      }
+
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/pizzas/", {
+          name: inputInProgress.name,
+          // location: inputInProgress.location,
+          location_id: locationIdURL,
+          size: inputInProgress.size,
+          notes: inputInProgress.notes,
+          calories: inputInProgress.calories,
+          price: inputInProgress.price,
+          // toppings: toppings //?
+        }, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+   
+          console.log(`pizza is ${response.data}`)
+   
+          if (response.status === 201 || response.status === 200) {
+              console.log("pizza created");
+          } else {
+              console.error("Failed to add pizza:", response.statusText);
+          }
+      } catch (error) {
+        console.error("Error:", error)
+      }
+    
+    };
+
+    const addToppingstoPizza = async () => {
+
+    }
 
       const returnToHome = () => {
         navigate(`/`)
@@ -176,7 +228,7 @@ export default function PizzaCreation() {
         <div className="form-container">
           New Pizza
         <form className="form" 
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         >
 
         <input className=""
@@ -184,6 +236,15 @@ export default function PizzaCreation() {
           placeholder="Customer Name"
           type="text" 
           value={inputInProgress.name}
+          onChange={updateTyping}
+          required
+        />
+
+        <input className=""
+          name="notes"
+          placeholder="additional notes"
+          type="text" 
+          value={inputInProgress.notes}
           onChange={updateTyping}
           required
         />
@@ -215,13 +276,13 @@ export default function PizzaCreation() {
         <option value="" disabled>
           size
         </option>
-        <option value="8inch" >
+        <option value="8 inch" >
           8 inch
         </option>
-        <option value="12inch" >
+        <option value="12 inch" >
           12 inch
         </option>
-        <option value="16inch" >
+        <option value="16 inch" >
           16 inch
         </option>
         </select>
@@ -263,7 +324,7 @@ export default function PizzaCreation() {
       ))}
 
 
-        <button className="searchBtn">Submit</button>
+        <button className="searchBtn" >Submit</button>
       </form>
       <button className="" onClick={returnToHome}>Cancel</button>
       <div>Calories: {inputInProgress.calories}</div>
