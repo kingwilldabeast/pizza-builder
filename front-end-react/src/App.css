@@ -152,7 +152,11 @@ body {
   /* color: black; */
   /* font-family: Magic; */
   text-align: center;
+  display: flex;
+  align-items: center;
   font-size: 50px;
+  width: 50%;
+  height: 10px;
 }
 
 .objectList {
@@ -164,7 +168,7 @@ body {
   backdrop-filter: blur(3px);
   /* background-color: rgb(167, 215, 166); */
   padding: 10px;
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -178,7 +182,7 @@ body {
   /* color: black; */
   padding: 10px;
   margin: 10px;
-  width: 400px;
+  width: 150px;
   text-align: center;
   /* font-family: Elegant; */
   text-shadow: 
@@ -193,12 +197,14 @@ body {
   border-radius: 10px;
   color: white;
   width: 400px;
+  height: 200px;
   background: rgba(90, 205, 255, 0.4);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .form-container {
@@ -212,6 +218,7 @@ body {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(3px);
   padding: 10px 0;
+  height: 500px;
 }
 
 .form {
@@ -220,8 +227,27 @@ body {
   align-items: center;
   gap: 10px;
   margin: 10px 0;
+  max-height: 500px;
+  overflow: scroll;
   /* border: 1px solid orange; */
 
+}
+
+.topping-item {
+  display: flex;
+  /* background-color: blue; */
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  text-shadow: 1px 1px 1px black;
+  /* gap: 10px; */
+}
+
+.topping-increments {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .objectItem:hover {
@@ -338,6 +364,8 @@ body {
     padding: 14% 0;
     font-size: 20px;
     margin-top: 90px;
+    width: auto;
+    height: auto;
   }
   
   .objectList {
@@ -396,9 +424,12 @@ body {
     width: 150px;
   }
 
+  .form-container {
+    height: 400px;
+  }
+
   .form {
     max-height: 300px;
-    overflow: scroll;
   }
 
   .ingredient-select {

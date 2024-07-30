@@ -14,7 +14,7 @@ export default function PizzaCreation() {
       name: 'Bob',
       location: 'West',
       size: '16 inch',
-      notes: 'no notes test',
+      notes: 'extra crispy',
       calories: 0,
       price: 0,
   });
@@ -216,12 +216,11 @@ export default function PizzaCreation() {
     };
 
     const addToppingstoPizza = async () => {
-
+      // incomplete
     }
 
       const returnToHome = () => {
         navigate(`/`)
-        // fix link color!
       }
 
     return(
@@ -288,25 +287,30 @@ export default function PizzaCreation() {
         </select>
 
         {toppings.map((topping, index) => (
-                <div key={index}>
-                  <label>Ingredient: {topping.ingredient.name}</label>
+                <div 
+                className = 'topping-item' 
+                key={index}
+                style={{
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${topping.ingredient.image_url})`, 
+                  backgroundSize:'300px', 
+                  backgroundPosition: '50% 50%'}} 
+                >
+                  <label>{topping.ingredient.name}</label>
                   <div>
                     <label>Both:</label>
-                    {/* <input
-                      type="number"
-                      value={topping.number1}
-                      onChange={(event) => handleNumberChange(index, 'number1', event)}
-                    /> */}
                     <button type="button" onClick={() => decrementBoth(index, 'leftTopping')}>-</button>
                     <button type="button" onClick={() => incrementBoth(index, 'leftTopping')}>+</button>
                   </div>
+
+                  <div className="topping-increments">
                   <div>
                     <label>Left:</label>
                     <input
                       type="number"
                       value={topping.leftTopping}
                       onChange={(event) => handleNumberChange(index, 'leftTopping', event)}
-                    />
+                      style={{ width: '30px' }} 
+                      />
                     <button type="button" onClick={() => decrementValue(index, 'leftTopping')}>-</button>
                     <button type="button" onClick={() => incrementValue(index, 'leftTopping')}>+</button>
                   </div>
@@ -316,10 +320,13 @@ export default function PizzaCreation() {
                       type="number"
                       value={topping.rightTopping}
                       onChange={(event) => handleNumberChange(index, 'rightTopping', event)}
-                    />
+                      style={{ width: '30px' }} 
+                      />
                     <button type="button" onClick={() => decrementValue(index, 'rightTopping')}>-</button>
                     <button type="button" onClick={() => incrementValue(index, 'rightTopping')}>+</button>
                   </div>
+                  </div>
+
                 </div>
       ))}
 

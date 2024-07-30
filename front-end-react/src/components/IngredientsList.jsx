@@ -40,7 +40,6 @@ export default function IngredientsList () {
                         onClick={() => showIngredient(ingredient.id)}
                         style={{
                             backgroundImage: `url(${ingredient.image_url})`, 
-                            // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${ingredient.image_url})`, 
                             backgroundSize:'200px', 
                             backgroundPosition: '50% 50%'}} 
                         >
