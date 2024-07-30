@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Nav (props) {
     const location = useLocation();
     const [activeLink, setActiveLink] = useState(location.pathname);
 
+    useEffect(() => {
+      setActiveLink(location.pathname);
+    }, [location.pathname]);
+    
     const handleClick = (path) => {
         setActiveLink(path);
       };
