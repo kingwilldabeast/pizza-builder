@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import Nav from './Nav'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import Draggable from "react-draggable"
 
 export default function PizzaCreation() {
 
@@ -224,6 +225,7 @@ export default function PizzaCreation() {
       }
 
     return(
+      // <Draggable>
         <div className="form-container">
           New Pizza
         <form className="form" 
@@ -337,7 +339,7 @@ export default function PizzaCreation() {
       <div>Calories: {inputInProgress.calories}</div>
       <div>Price: {inputInProgress.price}</div>
       </div>
-
+      // </Draggable>
 
 
     )

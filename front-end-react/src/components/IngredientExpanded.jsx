@@ -9,6 +9,7 @@ export default function IngredientExpanded (props) {
   let {ingredientID} = useParams()
   let navigate = useNavigate()
 
+
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(`http://127.0.0.1:8000/ingredients/${ingredientID}`)
@@ -49,7 +50,9 @@ export default function IngredientExpanded (props) {
       <Link to ='/ingredients' 
       style={{ textDecoration: 'none', color: 'black' }}
       >
+        <div className="hover-yellow">
       Back to Ingredients
+          </div>
       </Link>
         <br/>
       <div className='expandedBody'>
@@ -57,8 +60,8 @@ export default function IngredientExpanded (props) {
         <h2>{ingredient.name}</h2>
         <h3>{ingredient.description}</h3>
 
-        <div onClick={openEditor}>Edit Ingredient</div>
-        <div onClick={deleteEvent}>Delete Ingredient</div>
+        <div onClick={openEditor} className="hover-yellow">Edit Ingredient</div>
+        <div onClick={deleteEvent} className="hover-red"> Delete Ingredient</div>
         </div>
         <div className='expandedImageContainer'>
           <img src = {ingredient.image_url} />
@@ -69,7 +72,7 @@ export default function IngredientExpanded (props) {
   :     <div> 
             <div className='home'>  
             <h2>Ingredient not found</h2>
-            <Link to ='/ingredients' className='navtext'>Back to Ingredients</Link>
+            <Link to ='/ingredients' className='navtext' >Back to Ingredients</Link>
             </div> 
         </div>
 }

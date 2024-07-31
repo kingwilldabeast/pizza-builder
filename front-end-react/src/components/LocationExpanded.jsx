@@ -24,9 +24,15 @@ export default function LocationExpanded (props) {
   return location ? (
     <div className="expandedItem">
       <Link to ='/locations' 
-      style={{ textDecoration: 'none', color: 'black' }}
+      style={{ textDecoration: 'none', color: 'black'}}
       >
-      Back to locations</Link>
+        <div
+              className="hover-yellow"
+              >
+      Back to locations
+
+        </div>
+      </Link>
         <br/>
       <div className='expandedBody'>
         <div className='expandedText'>

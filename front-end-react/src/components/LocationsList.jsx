@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
+import Draggable from 'react-draggable'
 
 
 export default function LocationsList () {
@@ -30,6 +31,7 @@ export default function LocationsList () {
         return <h1>Loading... please wait</h1>
     } else {
         return (
+            // <Draggable>
             <div className="objectList">
     
                 {
@@ -52,6 +54,7 @@ export default function LocationsList () {
                 }
     
             </div>
+            // </Draggable>
         )
 
     }

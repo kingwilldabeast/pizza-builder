@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
+import Draggable from 'react-draggable';
 
 
 export default function IngredientsList () {
@@ -31,6 +32,7 @@ export default function IngredientsList () {
     } else {
         return (
             <>
+            {/* <Draggable> */}
             <div className="objectList">
     
                 {
@@ -52,13 +54,17 @@ export default function IngredientsList () {
                 }
     
             </div>
+            {/* </Draggable> */}
 
                 <Link to ='/newingredient' className='new-ingredient-button'
                 style={{ textDecoration: 'none'}}
                 >
+                {/* <Draggable> */}
                 <div className='createButton'>
                     Create Ingredient
                 </div>
+                {/* </Draggable> */}
+
                 </Link>
 
             </>
