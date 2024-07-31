@@ -32,7 +32,6 @@ export default function IngredientsList () {
     } else {
         return (
             <>
-            {/* <Draggable> */}
             <div className="objectList">
     
                 {
@@ -47,23 +46,18 @@ export default function IngredientsList () {
                         >
                             
                             <h2>{ingredient.name}</h2>
-                            {/* <h3>Author: {ingredient.attributes.author}</h3> */}
-                            {/* <h3>Summary: {ingredient.attributes.summary}</h3> */}
                         </div>    
                     ))
                 }
     
             </div>
-            {/* </Draggable> */}
 
                 <Link to ='/newingredient' className='new-ingredient-button'
                 style={{ textDecoration: 'none'}}
                 >
-                {/* <Draggable> */}
                 <div className='createButton'>
                     Create Ingredient
                 </div>
-                {/* </Draggable> */}
 
                 </Link>
 

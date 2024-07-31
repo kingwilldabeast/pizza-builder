@@ -171,7 +171,7 @@ export default function PizzaCreation() {
         e.preventDefault()
         addNewPizza()
         // addToppingstoPizza()
-        // navigate(`/ingredients`);
+        navigate(`/ingredients`);
         console.log(inputInProgress)
         // console.log(toppings)
       }
@@ -190,7 +190,6 @@ export default function PizzaCreation() {
       try {
         const response = await axios.post("http://127.0.0.1:8000/pizzas/", {
           name: inputInProgress.name,
-          // location: inputInProgress.location,
           location_id: locationIdURL,
           size: inputInProgress.size,
           notes: inputInProgress.notes,

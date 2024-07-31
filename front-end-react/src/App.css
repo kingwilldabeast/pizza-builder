@@ -1,13 +1,3 @@
-/* @font-face {
-  font-family: Magic;
-  src: url(assets/Magic.ttf);
-}
-
-@font-face {
-  font-family: Elegant;
-  src: url(assets/ElegantB.ttf);
-} */
-
 html, body {
   height: 100%;
   margin: 0;
@@ -22,31 +12,11 @@ html, body {
 body {
   overflow: hidden;
   position: fixed;
-  /* scroll-behavior: none; */
   background-image: URL(https://www.dollartree.com/file/products/20210406-4_main-big.jpg);
-  /* background-image: url('./assets/window.jpg'); */
-  /* background-image: url('./assets/pizza-mockup.png'); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-color: rgb(57, 14, 68); */
 
-  /* background-image: repeating-conic-gradient(from 30deg, #3e02c9 0% 60deg, #801111 0% 120deg);
-  background-size: 100px 50px;
-  background-color: #801111; */
-
-  /* background: radial-gradient(circle, transparent 20%, #801010 20%, #801010 80%, transparent 80%, transparent) 0% 0% / 76px 76px, radial-gradient(circle, transparent 20%, #801010 20%, #801010 80%, transparent 80%, transparent) 38px 38px / 76px 76px, linear-gradient(#6c3ddb 2px, transparent 2px) 0px -1px / 38px 38px, linear-gradient(90deg, #6c3ddb 2px, #801010 2px) -1px 0px / 38px 38px #801010;
-  background-size: 76px 76px, 76px 76px, 38px 38px, 38px 38px;
-  background-color: #801010; */
-
-  /* background: repeating-conic-gradient(from 45deg, #5b1b12 0% 25%, #af730c 0% 50%);
-  background-size: 100px 50px;
-  background-color: #ecac04; */
-
-  /* background-image: radial-gradient(#f0a62b 2px, transparent 2px), radial-gradient(#f0a62b 2px, transparent 2px);
-  background-size: 38px 38px;
-  background-position: 0 0, 19px 19px;
-  background-color: #521263; */
   
   width: 100%;
   display: flex;
@@ -62,8 +32,6 @@ body {
 }
 
 .app {
-  /* background-color: rgb(0, 0, 0, .7); */
-  /* border: 1px solid red; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -72,8 +40,6 @@ body {
 
 .header{
   text-align: center;
-  /* color: black; */
-  /* font-family: Magic; */
   font-size: 30px;
   width: 100%;
   display: flex;
@@ -85,17 +51,11 @@ body {
   backdrop-filter: blur(3px);
   border: 1px solid rgba(246, 59, 59, 0.25);
   border-radius: 10px;
-
-  /* justify-content: space-around; */
 }
 
 .nav {
   border-top: 1px solid yellow;
   border-bottom: 1px solid yellow;
-  /* border-radius: 10px; */
-  /* background-color: rgb(229, 192, 192); */
-  /* padding: 10px; */
-  /* width: auto; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -110,21 +70,17 @@ body {
 }
 
 .navtext {
-  /* font-family: Magic; */
   font-size: 40px;
-  /* color: white; */
   text-decoration: none;
   border: 1px solid transparent;
   padding: 10px;
   opacity: 1;
   transition: opacity 0.3s ease;
-  /* border-radius: 10px; */
   color: rgb(57, 54, 54);
 
 }
 
 .navtext:hover {
-  /* color: rgb(43, 204, 240); */
   border-top: 1px solid white;
   border-bottom: 1px solid white;
 }
@@ -136,7 +92,6 @@ body {
 
 .main {
   border-radius: 10px;
-  /* padding: 10px; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -150,15 +105,11 @@ body {
   backdrop-filter: blur(3px);
   border-radius: 10px;
   border: 1px solid green;
-  /* padding: 14% 0; */
-  /* color: black; */
-  /* font-family: Magic; */
   text-align: center;
   display: flex;
   align-items: center;
   font-size: 50px;
   width: 50%;
-  /* height: 10px; */
 }
 
 .objectList {
@@ -168,7 +119,6 @@ body {
   background: rgba(24, 158, 33, 0.4);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(3px);
-  /* background-color: rgb(167, 215, 166); */
   padding: 10px;
   width: 50%;
   display: flex;
@@ -181,12 +131,10 @@ body {
 .objectItem {
   border: 1px solid white;
   border-radius: 10px;
-  /* color: black; */
   padding: 10px;
   margin: 10px;
   width: 150px;
   text-align: center;
-  /* font-family: Elegant; */
   text-shadow: 
   -1px -1px 0 #000,  
   1px -1px 0 #000,
@@ -210,7 +158,7 @@ body {
 }
 
 .hover-red, .hover-yellow {
-  cursor: pointer; /* Optional: makes it clear that it's clickable */
+  cursor: pointer; 
 }
 
 .hover-red:hover {
@@ -243,19 +191,16 @@ body {
   margin: 10px 0;
   max-height: 500px;
   overflow: scroll;
-  /* border: 1px solid orange; */
 
 }
 
 .topping-item {
   display: flex;
-  /* background-color: blue; */
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   padding: 10px;
   text-shadow: 1px 1px 1px black;
-  /* gap: 10px; */
 }
 
 .topping-increments {
@@ -267,9 +212,6 @@ body {
 .objectItem:hover {
   border: 1px dashed yellow;
   text-shadow: 1px 1px 1px black;
-  /* color: rgb(0, 255, 0); */
-  /* background-image: url(https://static1.cbrimages.com/wordpress/wp-content/uploads/2018/12/r2d2.jpg);
-  background-size: 600px; */
 }
 
 .expandedItem {
@@ -291,16 +233,12 @@ body {
 }
 
 .expandedText {
-  /* border: 1px solid yellow;
-  border-radius: 10px; */
-  /* color: rgb(21, 122, 21); */
   color: black;
   padding: 10px;
   margin: 10px;
   width: 500px;
   height: 300px;
   text-align: center;
-  /* font-family: Elegant; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -308,11 +246,6 @@ body {
 }
 
 .expandedImageContainer {
-  /* border: 1px solid yellow;
-  border-radius: 10px; */
-  /* color: rgb(21, 122, 21); */
-  /* color: black; */
-  /* padding: 10px; */
   margin: 10px;
   width: 300px; 
   height: 200px; 
@@ -328,10 +261,7 @@ body {
 
 @media (max-width: 400px) {
   body {
-    /* width: auto; */
-    /* height: 100vh; */
 
-    /* height: 100%; */
   }
 
   #root {
@@ -361,7 +291,6 @@ body {
   }
   
   .navtext:hover {
-    /* color: rgb(43, 204, 240); */
 
   }
   
